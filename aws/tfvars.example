@@ -1,0 +1,24 @@
+////////////////////////////////
+// TFVARS - Override Variables Here
+
+aws_profile = "default"
+
+aws_region = "us-west-2"
+
+tag_customer = "template"
+
+tag_project = "template"
+
+tag_name = "YOUR NAME"
+
+tag_dept = "YOUR DEPARTMENT"
+
+tag_contact = "YOUR EMAIL"
+
+tag_application = "template"
+
+tag_ttl = "4"
+
+aws_key_pair_file = "~/.ssh/id_rsa"
+
+aws_key_pair_name = "scottford"
