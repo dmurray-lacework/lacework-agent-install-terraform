@@ -38,6 +38,26 @@ variable "centos_count" {
   default = "0"
 }
 
+variable "amazon2_count" {
+  default = "0"
+}
+
+variable "rhel8_count" {
+  default = "0"
+}
+
+variable "suse15_count" {
+  default = "0"
+}
+
+variable "ubuntu1804_count" {
+  default = "0"
+}
+
+variable "debian10_count" {
+  default = "0"
+}
+
 
 ////////////////////////////////
 // Tags

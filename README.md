@@ -1,5 +1,5 @@
 # Lacework Agent Install   
-This repo provides terraform code for deploying the Lacework workload agent for public cloud providers. 
+This repo provides example terraform code for deploying the Lacework workload agent for public cloud providers. 
 
 ## Requirements
 - [Terraform 12.x](https://www.terraform.io/)
