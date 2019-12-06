@@ -34,6 +34,11 @@ variable "instance_count" {
   default = "1"
 }
 
+variable "centos_count" {
+  default = "0"
+}
+
+
 ////////////////////////////////
 // Tags
 
