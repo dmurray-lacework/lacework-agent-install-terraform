@@ -22,3 +22,5 @@ tag_ttl = "4"
 aws_key_pair_file = "~/.ssh/id_rsa"
 
 aws_key_pair_name = "scottford"
+
+accesstoken = "YOUR_LACEWORK_ACCESS_TOKEN"

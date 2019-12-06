@@ -25,16 +25,27 @@ resource "aws_instance" "centos" {
     X-TTL         = "${var.tag_ttl}"
   }
 
+  provisioner "file" {
+    content     = "${data.template_file.config_json.rendered}"
+    destination = "/tmp/config.json"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "sudo hostname centos-template"
+      "sudo hostname centos-lacework",
+      "sudo mkdir -p /var/lib/lacework/config",
+      "sudo mv /tmp/config.json /var/lib/lacework/config/config.json",
+      "sudo yum -y install curl",
+      "sudo curl -o ${var.install_dir}/install.sh ${var.install_sh_url}",
+      "sudo chmod +x ${var.install_dir}/install.sh",
+      "sudo ${var.install_dir}/install.sh"
     ]
 
   }
 }
 
-////////////////////////////////
-// Amazon 2 Instance
+# ////////////////////////////////
+# // Amazon 2 Instance
 
 resource "aws_instance" "amazon2" {
   connection {
@@ -59,17 +70,28 @@ resource "aws_instance" "amazon2" {
     X-Contact     = "${var.tag_contact}"
     X-TTL         = "${var.tag_ttl}"
   }
+  provisioner "file" {
+    content     = "${data.template_file.config_json.rendered}"
+    destination = "/tmp/config.json"
+  }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo hostname amazon2-template"
+      "sudo hostname amazon2-lacework",
+      "sudo mkdir -p /var/lib/lacework/config",
+      "sudo mv /tmp/config.json /var/lib/lacework/config/config.json",
+      "sudo yum -y install curl",
+      "sudo curl -o ${var.install_dir}/install.sh ${var.install_sh_url}",
+      "sudo chmod +x ${var.install_dir}/install.sh",
+      "sudo ${var.install_dir}/install.sh"
     ]
 
   }
+  
 }
 
-////////////////////////////////
-// RHEL8 Instance
+# ////////////////////////////////
+# // RHEL8 Instance
 
 resource "aws_instance" "rhel8" {
   connection {
@@ -95,16 +117,27 @@ resource "aws_instance" "rhel8" {
     X-TTL         = "${var.tag_ttl}"
   }
 
+  provisioner "file" {
+    content     = "${data.template_file.config_json.rendered}"
+    destination = "/tmp/config.json"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "sudo hostname rhel8-template"
+      "sudo hostname rhel8-lacework",
+      "sudo mkdir -p /var/lib/lacework/config",
+      "sudo mv /tmp/config.json /var/lib/lacework/config/config.json",
+      "sudo yum -y install curl",
+      "sudo curl -o ${var.install_dir}/install.sh ${var.install_sh_url}",
+      "sudo chmod +x ${var.install_dir}/install.sh",
+      "sudo ${var.install_dir}/install.sh"
     ]
 
   }
 }
 
-////////////////////////////////
-// Ubuntu 18.04 Instance
+# ////////////////////////////////
+# // Ubuntu 18.04 Instance
 
 resource "aws_instance" "ubuntu1804" {
   connection {
@@ -130,16 +163,27 @@ resource "aws_instance" "ubuntu1804" {
     X-TTL         = "${var.tag_ttl}"
   }
 
+  provisioner "file" {
+    content     = "${data.template_file.config_json.rendered}"
+    destination = "/tmp/config.json"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "sudo hostname ubuntu1804-template"
+      "sudo hostname ubuntu1804-lacework",
+      "sudo mkdir -p /var/lib/lacework/config",
+      "sudo mv /tmp/config.json /var/lib/lacework/config/config.json",
+      "sudo apt-get install -y curl",
+      "sudo curl -o ${var.install_dir}/install.sh ${var.install_sh_url}",
+      "sudo chmod +x ${var.install_dir}/install.sh",
+      "sudo ${var.install_dir}/install.sh"
     ]
 
   }
 }
 
-////////////////////////////////
-// SUSE 15 Instance
+# ////////////////////////////////
+# // SUSE 15 Instance
 
 resource "aws_instance" "suse15" {
   connection {
@@ -165,16 +209,31 @@ resource "aws_instance" "suse15" {
     X-TTL         = "${var.tag_ttl}"
   }
 
+  provisioner "file" {
+    content     = "${data.template_file.config_json.rendered}"
+    destination = "/tmp/config.json"
+  }
+
+
   provisioner "remote-exec" {
     inline = [
-      "sudo hostname suse15-template"
+      "echo SLEEP",
+      "sleep 20",
+      "sudo hostname suse15-lacework",
+      "sudo mkdir -p /var/lib/lacework/config",
+      "sudo mv /tmp/config.json /var/lib/lacework/config/config.json",
+      "sleep 20",
+      "sudo zypper install -y curl",
+      "sleep 20",
+      "sudo curl -o ${var.install_dir}/${var.rpm_name} ${var.rpm_url}",
+      "sudo zypper install -y --allow-unsigned-rpm ${var.install_dir}/${var.rpm_name}"
     ]
 
   }
 }
 
-////////////////////////////////
-// Debian 10 Instance
+# ////////////////////////////////
+# // Debian 10 Instance
 
 resource "aws_instance" "debian10" {
   connection {
@@ -200,9 +259,20 @@ resource "aws_instance" "debian10" {
     X-TTL         = "${var.tag_ttl}"
   }
 
+  provisioner "file" {
+    content     = "${data.template_file.config_json.rendered}"
+    destination = "/tmp/config.json"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "sudo hostname debian10-template"
+      "sudo hostname debian10-lacework",
+      "sudo mkdir -p /var/lib/lacework/config",
+      "sudo mv /tmp/config.json /var/lib/lacework/config/config.json",
+      "sudo apt-get install -y curl",
+      "sudo curl -o ${var.install_dir}/install.sh ${var.install_sh_url}",
+      "sudo chmod +x ${var.install_dir}/install.sh",
+      "sudo ${var.install_dir}/install.sh"
     ]
 
   }
