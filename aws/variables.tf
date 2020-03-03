@@ -50,6 +50,10 @@ variable "suse15_count" {
   default = "0"
 }
 
+variable "suse15sp1_count" {
+  default = "0"
+}
+
 variable "ubuntu1804_count" {
   default = "0"
 }
