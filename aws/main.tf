@@ -3,8 +3,8 @@ terraform {
 }
 
 provider "aws" {
-  region                  = "${var.aws_region}"
-  profile                 = "${var.aws_profile}"
+  region                  = var.aws_region
+  profile                 = var.aws_profile
   shared_credentials_file = "~/.aws/credentials"
 }
 
@@ -63,7 +63,7 @@ data "aws_ami" "rhel8" {
   owners = ["309956199498"]
 }
 
-data "aws_ami" "suse15" {
+data "aws_ami" "suse15sp1" {
   most_recent = true
 
   filter {
@@ -110,3 +110,21 @@ data "aws_ami" "debian10" {
 
   owners = ["136693071363"]
 }
+
+data "aws_ami" "suse15" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["suse-sles-15-v*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["013907871322"]
+}
+
+

@@ -20,6 +20,10 @@ output "suse15_public_ip" {
   value = "${aws_instance.suse15.*.public_ip}"
 }
 
+output "suse15sp1_public_ip" {
+  value = "${aws_instance.suse15sp1.*.public_ip}"
+}
+
 output "debian10_public_ip" {
   value = "${aws_instance.debian10.*.public_ip}"
 }
