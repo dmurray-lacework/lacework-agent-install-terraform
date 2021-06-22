@@ -142,6 +142,11 @@ resource "aws_instance" "rhel8" {
 # ////////////////////////////////
 # // Ubuntu 18.04 Instance
 
+resource "aws_key_pair" "key" {
+  key_name   = "my_key"
+  public_key = file(pathexpand("~/.ssh/id_rsa.pub"))
+}
+
 resource "aws_instance" "ubuntu1804" {
   connection {
     host        = aws_instance.ubuntu1804[count.index].public_ip
@@ -151,7 +156,7 @@ resource "aws_instance" "ubuntu1804" {
 
   ami                         = data.aws_ami.ubuntu1804.id
   instance_type               = var.instance_type
-  key_name                    = var.aws_key_pair_name
+  key_name                    = aws_key_pair.key.key_name
   subnet_id                   = aws_subnet.lw_template_subnet.id
   vpc_security_group_ids      = ["${aws_security_group.lw_template_sg.id}"]
   associate_public_ip_address = true

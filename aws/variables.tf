@@ -100,17 +100,3 @@ variable "install_dir" {
   description = "Directory to download artifacts to and execute from"
   default = "/tmp"
 }
-
-variable "rpm_url" {
-  description = "Lacework agent rpm URL"
-}
-
-variable "rpm_name" {
-  description = "Lacework agent rpm name"
-  default = "lacework-latest-1.x86_64.rpm"
-}
-
-
-
-
-
