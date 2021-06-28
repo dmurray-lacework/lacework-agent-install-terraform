@@ -143,7 +143,7 @@ resource "aws_instance" "rhel8" {
 # // Ubuntu 18.04 Instance
 
 resource "aws_key_pair" "key" {
-  key_name   = "my_key"
+  key_name   = var.aws_key_pair_name
   public_key = file(pathexpand("~/.ssh/id_rsa.pub"))
 }
 
