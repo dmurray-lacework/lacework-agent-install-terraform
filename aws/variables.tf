@@ -100,3 +100,9 @@ variable "install_dir" {
   description = "Directory to download artifacts to and execute from"
   default = "/tmp"
 }
+
+variable "storage_bucket_name" {
+  type        = string
+  default     = ""
+  description = "The name of the gcs where tf state is stored"
+}
