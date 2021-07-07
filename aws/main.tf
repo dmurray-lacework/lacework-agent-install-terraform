@@ -3,7 +3,7 @@ terraform {
 
   backend "gcs" {
     bucket = var.storage_bucket_name
-    prefix = "lacework"
+    prefix = "agent"
   }
 }
 
