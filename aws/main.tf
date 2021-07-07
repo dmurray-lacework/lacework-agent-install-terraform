@@ -1,11 +1,13 @@
 terraform {
   required_version = " >= 0.12.0"
+
+  backend "gcs" {
+    bucket = var.storage_bucket_name
+    prefix = "lacework"
+  }
 }
 
-backend "gcs" {
-  bucket = var.storage_bucket_name
-  prefix = "lacework"
-}
+
 
 provider "aws" {
   region                  = var.aws_region
