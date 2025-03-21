@@ -1,0 +1,3 @@
+[submodule "libs/submodule-repo"]
+	path = libs/submodule-repo
+	url = https://github.com/dmurray-lacework/tally-git.git
